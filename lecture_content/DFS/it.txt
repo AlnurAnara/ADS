@@ -1,0 +1,34 @@
+G={
+    A:[B]
+    B:[A,C,D]
+    C:[K,B,F]
+    D:[B,E,F]
+    E:[D,F]
+    F:[C,D,E]
+    K:[C]
+}
+
+DFS(G)
+set<char>v;
+stack<char>st;
+for(auto&e : G){  // this for loop is used to check the unconnected components
+    if(!v.count(e.first)){
+        st.push(e.first);
+       dfs_helper(G,st);
+    }
+}
+
+dfs_helper(G,st)
+    while(!st.empty()){
+        c=st.top(); //the node which is to be visited
+        st.pop();
+        v.insert(c); 
+    }
+
+    for(auto&e : G[c]){
+        if(!v.count(e)){
+            st.push(e);
+            dfs_helper(G,st);
+        }
+    }
+  

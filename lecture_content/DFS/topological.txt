@@ -1,0 +1,45 @@
+topological sort is used to directed acyclic（without cyclic graph 
+
+
+
+A-> B-> D-> E
+    |   |   /
+    to  to to   
+K ->C -> F   
+            H
+
+the stack must have the same direction
+i.e. ABKCDEFH  are pointing to the right
+
+we can use traverse 
+F E D C B A K H 
+bc this array are pointing to the right
+and reverse this array to get the topological sorted array 
+H K B C D E F A
+
+
+DFS(G)
+set<char>v;
+vector<char>a;
+
+void dfsRecursive(int node, unordered_map<int, vector<int>>& graph, unordered_set<int>& visited) {
+    // Mark node as visited and process it
+    visited.insert(node);
+    
+    // Visit all unvisited neighbors
+    for (auto neighbor : graph[node]) {
+        if (!visited.count(neighbor)) {
+            dfsRecursive(neighbor, graph, visited);
+        }
+    }
+
+    a.push_back(node);
+    reverse(a);
+}
+
+
+for(auto&e : G){  // this for loop is used to check the unconnected components
+    if(!v.count(e.first)){
+        dfsRecursive(e.first,G);
+    }
+}

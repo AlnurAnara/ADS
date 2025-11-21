@@ -1,0 +1,8 @@
+Practice Problems
+Find the kth smallest element in an array
+Merge k sorted arrays
+Find median in a data stream
+Sort a nearly sorted array
+Connect n ropes with minimum cost
+Find k largest elements in an array
+Implement heap using only insert and extractMin operations

@@ -1,0 +1,142 @@
+Complete Binary Search Tree
+1.定义： 一棵二叉树，除了最底层，其他各层都是满的（即该层所有节点都存在）。
+Structural Requirement: Every level, except possibly the last, is completely filled (i.e., all nodes exist at that level).
+2.最底层要求： 最底层的节点都靠左排列，不允许中间有空缺。
+Bottom-Layer Requirement: All nodes in the last level must be as far left as possible. There can be no gaps between the nodes on the final level.
+
+3.分类
+<1>.maxheap       and        <2>.minheap          
+堆属性：父节点大于或等于子节点
+定义： 对于树中的任何一个非叶子节点 N，它的值必须大于或等于其所有子节点（左子节点和右子节点）的值。
+
+N≥左子节点
+
+N≥右子节点
+
+结果： 这个属性保证了整个堆中最大的元素总是位于根节点（Root）的位置。
+
+             9
+            /  \
+           6    7
+          / \   / \
+        4    5  3  2
+       / \
+      1   0
+
+
+for inset value 8: 1. firstly add 8 as the left child of 5 
+
+                                             9
+                                            /  \
+                                           6    7
+                                          / \   / \
+                                        4    5  3  2
+                                       / \   /
+                                      1   0  8
+                   2. since 8 > 5;swap 8 and 5
+                   
+                                             9
+                                            /  \
+                                           6    7
+                                          / \   / \
+                                        4    8  3  2
+                                       / \   /
+                                      1   0  5
+                    3. since 8 > 6;swap 8 and 6
+
+                         9
+                        /  \
+                       8    7
+                      / \   / \
+                     4    6  3  2
+                    / \   /
+                   1   0  5
+
+
+
+      
+for delete value 9  : 1. take 5 into the position 9
+                   
+                                             9
+                                            /  \
+                                           8    7
+                                          / \   / \
+                                        4    6  3  2
+                                       / \   /
+                                      1   0  5
+
+                        2. take 5 into the position 9
+                   
+                                             5
+                                            /  \
+                                           8    7
+                                          / \   / \
+                                        4    6  3  2
+                                       / \   
+                                      1   0  
+                        
+
+                        3. compare the subtree with 7,8,9 find th indMax is 8 ,swap 8 and 5
+                   
+                                             8
+                                            /  \
+                                           5    7
+                                          / \   / \
+                                        4    6  3  2
+                                       / \   
+                                      1   0  
+
+
+                        3. compare the subtree with 4,5,6 find th indMax is 8 ,swap 6 and 5
+                   
+                                             8
+                                            /  \
+                                           6     7
+                                          / \   / \
+                                        4    5  3  2
+                                       / \   
+                                      1   0  
+
+
+      
+1.insert val
+
+insert (arr,val,p):
+    arr.push_back({val,p})
+    i = arr.size() - 1
+    while (i > 0 || arr[i].priority > arr[(i-1) /2].priority):
+        swap(arr[i],arr[(i-1) /2])  #swap means interchange
+        int i = (i-1) /2
+
+extractMax(arr) {
+    if arr.size() = 0{
+        return 0;
+    }
+
+    int tmp = arr[0]
+    arr[0] = arr[-1]
+
+
+   
+    i = 0;
+    heapify(arr,i)
+
+heapify(arr,i)
+    left = 2*i + 1
+    right = 2*i + 2
+    idxMax = i 
+    if (arr[left].priority > arr[right].priority){
+        idxMax = left
+    }
+    if (arr[right].priority > arr[right].priority){
+        idxMax = right
+    }
+
+    if i != idxMax{}{
+        swap (arr[i],arr[idxMax])
+        heapify(arr,idxMax)
+    }
+}
+2.delete val
+
+

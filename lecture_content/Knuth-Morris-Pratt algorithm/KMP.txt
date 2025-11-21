@@ -1,0 +1,36 @@
+
+KMP Approach - O(n + m)
+Given:
+Text string text (length n)
+Pattern string pattern (length m)
+Find all occurrences of pattern in text.
+
+
+
+t=ABABAB
+p=ABABC
+
+lsp= ABABC
+     00120
+
+       prefix   suffix
+A      none                       0
+AB     A        B                 0
+ABA    AB       BA                1   
+ABAB   AB       AB                2
+ABABC  AB       ABC               0
+
+
+
+i.e. ABABADAB
+     0012301
+
+       prefix      and suffix
+A 0
+B 0
+ABA 1
+ABAB 2
+ABABA 3  (ABA and ABA)
+ABABAD 0
+ABABADA 1
+ABABADAB 2

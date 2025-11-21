@@ -1,0 +1,2 @@
+
+O(log n) id just for balanced bst (figure out what is balanced bst)

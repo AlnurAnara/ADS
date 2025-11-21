@@ -1,0 +1,63 @@
+LPS(p)
+  lps[0]=0        # 第一个字符的lps总是0
+  len=0           # 当前最长公共前后缀的长度
+  i=1             # 从第二个字符开始遍历
+  while (i < m)   # 遍历整个模式串
+      if (p[i]==p[len])  # 当前字符匹配
+          len++           # 公共前后缀长度加1
+          lps[i]=len      # 记录当前位置的lps值
+          i++             # 移动到下一个字符
+      else                # 当前字符不匹配 Characters don't match
+          if (len !=0)    # 如果之前有公共前后缀  If we had a previous match
+              len=lps[len-1] # 关键：回退到前一个lps值 Fall back to previous LPS value
+          else            # 没有公共前后缀 No previous match at all
+              lps[i]=0    # 当前lps为0
+              i++         # 移动到下一个字符
+  return lps
+
+
+
+KMP(t,p)   //O(n+m) m is creating the lsp array, n is te process for incremending the array index
+
+  n=t.length();
+  m=p.length();
+  lps=LPS(p);
+i=0;j=0;
+while (i < n)
+    if (t[i]==p[j])
+        i++;j++;
+    else
+        if (j !=0)
+            j=lps[j-1];
+        else
+            i++;
+    
+
+    
+
+    FUNCTION modifiedKMP(A, B, lps):
+    n = length(A)
+    m = length(B)
+    i = 0  // index for virtual doubled string (0 to 2n-1)
+    j = 0  // index for pattern B
+    
+    // We only need to check up to 2n-1 for virtual doubled string
+    WHILE i < 2 * n:
+        // Get character from virtual doubled string using modulo
+        virtualIndex = i % n
+        actualChar = A[virtualIndex]
+        
+        IF B[j] == actualChar:
+            i = i + 1
+            j = j + 1
+        
+        IF j == m:
+            RETURN TRUE  // Pattern found
+        
+        ELSE IF i < 2 * n AND B[j] ≠ actualChar:
+            IF j ≠ 0:
+                j = lps[j-1]
+            ELSE:
+                i = i + 1
+    
+    RETURN FALSE

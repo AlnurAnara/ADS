@@ -1,0 +1,57 @@
+//time complexity O(n-m)
+
+RK(t,p)
+b=31; //base 
+mod = 10^9+7; //prime number
+n=t.length();
+m=p.length();
+pH=p[0]-'a'+1;
+tH=t[0]-'a'+1;
+power=1;
+for(int i=1;i<m;i++){
+    pH=(pH*b+(p[i]-'a'+1))%mod;
+    tH=(tH*b+(t[i]-'a'+1))%mod;
+    power*=b;
+}
+for(int i=0;i<=n-m;i++){
+    if(pH==tH){
+        //match the tH with pH
+        match=true;
+        for(int j=0;j<m;j++){
+            if(t[i+j]!=p[j]){
+                match=false;
+                break;
+            }
+        }
+        if(match){
+            result.push_back(i);
+        }
+    }
+
+    //计算下一个窗口的哈希值（滚动哈希）
+    if(i<n-m){
+        tH=(tH-(t[i]-'a'+1)*power)*b+(t[i+m]-'a'+1);
+    }
+}
+
+/*
+t=CBABCABA
+p=ABC
+b=10
+p=ABC=10^2*1+10^1*2+10^0*3=123=h1
+tH= CBA=10^2*3+10^1*2+10^0*1=321 =(h1-10^2*3)*10+2
+tH= BAB = 10^2*2+10^1*1+10^0*2=212 =(h2-10^2*3)*10+1
+tH= ABC=10^2*1+10^1*2+10^0*3=123
+
+explain the pH and tH calculation above
+for p=ABC
+A=1,B=2,C=3
+A=p[0]-'A'+1=1
+B=p[1]-'A'+1=2
+C=p[2]-'A'+1=3
+so pH=pH*b+(pH[0]-"A"+1)=1*10+2=12
+then
+pH=pH*b+(pH[1]-"A"+1)=12*10+3=123
+
+
+*/

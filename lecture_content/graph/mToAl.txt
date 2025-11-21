@@ -1,0 +1,9 @@
+mToAL(vector<vector<int>> m)
+unordered map<int,vector<int>> AL
+for(int i=0;i<m.size();i++){
+    for(int j=i+1;j<m.size();j++){
+        if m[i][j]
+            AL[i].push_back(j)
+    }
+}
+ TS:V^2

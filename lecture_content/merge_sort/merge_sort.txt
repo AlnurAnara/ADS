@@ -1,0 +1,8 @@
+time complexitity is O(nlog n)  because we divide the array which is log n and compare the 大小 which is n (horizantal )
+8 7 2 5 9 6 4 3
+8 7 2 5    9 6 4 3       split the oridinary array into 2 parts 
+8 7   2 5    9 6   4 3 
+8  7  2  5   9  6  4  3   till there's only 1 elem in each subarrays
+7 8   2 5     9 6   4 3   merge 2 elems with sorted 
+2 5 7 8     3 4 9 6       merge 4 elems with sorted ( compare 7 and 2 firstly ,then 7 and 5; finaly put 7 and 8 to the last position)
+2 3 4 5 6 7 8 9

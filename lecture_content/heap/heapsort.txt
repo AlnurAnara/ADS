@@ -1,0 +1,70 @@
+heap sort has 2 process 
+1. firstly create a max heap 
+2. sort the cbt
+swap the max node with the last node 
+then remove the max node which is in the current last position 
+then do heapify again to the new heap  to restore the max heap property
+
+!!!!! time complexity of heap sort is  O(n log n)   log n comes from heapify 
+      space complexity is O(log n)
+
+
+
+数组: [3, 10, 5, 1, 8]
+堆结构:
+      3(i=0)
+     /   \
+   10(i=1) 5(i=2)
+   /   \
+ 1(i=3) 8(i=4)
+
+<1>.process 1- create a max heap
+ step 1: swap 3 and 10 
+       10
+     /   \
+    3     5
+   /   \
+ 1     8
+
+ step 2: swap 3 and 8
+       10
+     /   \
+    8     5
+   /   \
+ 1     3
+
+ now the array is 10 8 5 1 3 
+
+<2>.process 2 -- sort the heap 
+1. swap 10 and 3 ,then cut 10
+now the array is 3 8 5 1 [10]
+now the heap is    
+       3
+     /   \
+    8     5
+   /   
+ 1     
+ then do heapify -- swap 8 and 3
+       8
+     /   \
+    3     5
+   /   
+ 1     
+2. swap 8 and 1 
+now the array is 1 3 5 [8] [10]
+now the heap is 
+       1
+     /   \
+    3     5
+   
+3. cut 5
+now the array is 1 3 [5] [8] [10]
+now the heap is 
+       1
+     /   
+    3     
+
+4. now cut 3 and just 1 is  left
+so the new array is 1 3 5 8 10
+`
+  

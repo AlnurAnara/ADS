@@ -1,0 +1,18 @@
+In Rabin–Karp, when the hash of a text substring equals the hash of the pattern,
+Compare the substring and pattern character by character to confirm
+
+
+Given:
+
+Text string s1 (length n)
+Pattern string s2 (length m)
+Find all occurrences of s2 in s1.
+
+Time complexity :O(n+m)
+
+Idea:
+
+Compute hash of pattern s2
+Compute prefix hashes of text s1
+For each position i, compare hash of substring with pattern hash
+Only compare actual strings if hashes match (to handle collisions)

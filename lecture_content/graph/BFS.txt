@@ -1,0 +1,40 @@
+5.1 BFS 本质是什么？
+BFS = 从起点出发，一圈一圈向外扩散，先访问所有“距离 1 的点”，再访问“距离 2 的点”，再是“距离 3 的点”…
+它用的关键结构：队列 queue（先进先出）
+
+        0
+       / \
+      1   2
+     / \   \
+    3   4   5
+从 0 出发：
+
+第 0 层：0
+第 1 层：1, 2
+第 2 层：3, 4, 5
+
+访问顺序：0 → 1 → 2 → 3 → 4 → 5
+
+BFS(map<int,vector<int>> graph, int startNode) {
+    
+    queue<int> q;                    // Queue for BFS traversal
+    set<int> visited;                // Tracks visited nodes
+    
+    visited.insert(startNode);       // Mark start node as visited
+    q.push(startNode);               // Add start node to queue
+    
+    while (!q.empty()) {
+        int currentNode = q.front(); // Get front node from queue
+        q.pop();                     // Remove it from queue
+        
+        // Visit all neighbors of current node
+        for (auto e: graph[currentNode]) {
+            if (!visited.count(e)) { // If neighbor not visited
+                q.push(e);           // Add to queue for future processing
+                visited.insert(e);   // Mark as visited
+            }
+        }
+    }
+    
+    return result;                   // Missing: result is not defined!
+}

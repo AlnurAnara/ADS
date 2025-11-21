@@ -1,0 +1,30 @@
+with ordered linked list
+
+// Node structure
+struct Node {
+    int data;
+    int priority;
+    Node* next;
+};
+
+// Insert into priority queue (sorted linked list)
+Node* push(Node* head, int val, int p) {   // val = data, p = priority
+    Node* tmp = new Node(val, p);          // Create new node
+
+    // Case 1: Insert at head (either list is empty OR new priority is higher)
+    if (head == NULL || p > head->priority) {
+        tmp->next = head;
+        return tmp;                        // New node becomes head
+    }
+
+    // Case 2: Find proper position
+    Node* current = head;
+    while (current->next != NULL && current->next->priority < p) {
+        current = current->next;
+    }
+
+    // Insert tmp after current
+    tmp->next = current->next;
+    current->next = tmp;
+    return head;
+}
