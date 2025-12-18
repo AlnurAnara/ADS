@@ -1,0 +1,68 @@
+Prim's Algorithm  is used for mst 
+(1).Definition
+Grow the MST from an arbitrary start vertex by repeatedly picking the minimum weight edge 
+that connects the current tree to a new vertex. 
+A min-heap (priority queue) selects the next cheapest edge.
+
+(2).Steps (heap-based)
+1.Choose a start vertex s; push (0, s) into min-heap.
+2.While heap not empty:
+    * Pop the edge with minimum weight to vertex v.
+    * If v is already in the tree, skip it.
+    * Add v to the tree; add its edge weight to total cost.
+    * For each neighbor (to, w) of v, push (w, to) into heap if to not yet in tree.
+3.Stop when all vertices are included.
+
+(3).Time Complexity
+Using adjacency list + binary heap: (O(E \log V))
+Using adjacency matrix (no heap): (O(V^2))
+
+
+
+
+
+
+
+  0 1 2 3 4
+0
+1
+2
+3
+4
+int minIdx(vector<bool>inMST,vector<int>D){
+    min_val = INT_MAX;
+    min_idx = -1;
+    for(int i=0;i<inMST.size();i++){
+        if D[i] < min_val && !inMST[i]{
+            min_val = D[i]
+            min_idx = i;
+        }
+        return min_idx;
+    }
+   
+}
+
+Prim(vector<vector<int>>G, int V){ //O(V^2) SC:O(V)
+    vector<int> inMST(V，Flase) // check which node is in the  inMST
+    vector<int> D(V,INT_MAX) // initilise the distance
+
+    D[0]=0;// choose the starting node
+    total_weight = 0;
+    for(int i=0;i<V-1;i++){ //O(V)
+        next = minIdx(inMST,D); //O(V)
+        inMST[next] =True;
+        total_weight += D[next];
+
+        for(int j=0;j<V;j++){ //O(V)
+            if( G[next][j] >0  && G[next][j] < D[j] && !inMST[j]) {
+                D[j] = G[next][j];
+
+            }
+        }
+
+
+        
+    }
+
+
+}

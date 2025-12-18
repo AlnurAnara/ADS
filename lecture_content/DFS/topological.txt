@@ -1,5 +1,14 @@
 topological sort is used to directed acyclic（without cyclic graph 
+Time complexity: O(V + E)
+用于有先后顺序，依赖性的例子
+Task dependencies:
+A → B (A must be done before B)
+A → C
+B → D
+C → D
 
+One valid topological order: A, B, C, D
+Another valid order: A, C, B, D
 
 
 A-> B-> D-> E

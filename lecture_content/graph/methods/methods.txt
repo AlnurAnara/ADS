@@ -1,0 +1,25 @@
+1 —— 2
+|    |
+3 —— 4
+
+1.edge list : SP:O(E) TC:O(E)
+[1,2] [2,4] [3,4] [[3,1]]
+
+2.adjacency list : SC:O(V+E) TC:O(degree of V)     
+
+3.matrix : SC:O(V^2);TC:O(1)      the most effecient and perfect  and use more space for sparse graphs(less edge number)
+   1  2  3  4 
+1  0  1  1  0
+2  1  0  0  1
+3  1  0  0  1
+4  0  1  1  0
+
+
+Comparison of Representations
+Operation	Adjacency Matrix	Adjacency List	    Edge List
+Space	    O(V²)	            O(V + E)	            O(E)
+Add edge	O(1)	            O(1)	                  O(1)
+Check edge	O(1)	            O(degree)	         O(E)
+Get neighbors	O(V)	        O(degree)	            O(E)
+Iterate edges	O(V²)	        O(V + E)	            O(E)
+Best for	   Dense graphs	   Sparse graphs	   Edge algorithms

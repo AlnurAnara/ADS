@@ -1,0 +1,39 @@
+Given a connected, undirected, weighted graph (G = (V, E)), 
+a spanning tree is a subgraph that:
+Includes all vertices in (V)
+Is a tree (no cycles)
+Has exactly (|V| - 1) edges
+
+A minimum spanning tree (MST) is the spanning tree 
+with the smallest possible total edge weight. 
+An MST has exactly (|V| - 1) edges and no cycles.
+
+
+   (1)    4      (2)
+ A ----- B ----- C
+  \3   2 |     6/
+   \    |5    /
+    \   |   /
+      D --- E
+        1
+Possible MST edges: AB(1), AD(3), BD(2), CE(6) with total cost 12.
+
+
+
+the differences between kruskal and Prim
+Kruskal:“Pick the smallest edges globally, one by one, as long as they don’t form a cycle.”
+
+Prim:“Grow a tree from a starting vertex, always adding the cheapest edge from the tree to a new vertex.”
+
+| Aspect                     | **Kruskal’s Algorithm**                                  | **Prim’s Algorithm**                                             |
+| -------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------- |
+| Basic strategy             | Sort **all edges** and add the smallest “safe” edges     | Start from one vertex and **grow** the MST step by step          |
+| Grows…                     | A **forest** that gradually merges into one tree         | A single **tree**, starting from an arbitrary root               |
+| Main data structure        | **Disjoint Set Union (DSU / Union-Find)** + sorted edges | **Priority queue (min-heap)** or array of `key[]` + `used[]`     |
+| Input format best suited   | **Edge list**                                            | **Adjacency list** or **matrix**                                 |
+| Cycle detection            | Using DSU: `find(u) == find(v)` ⇒ cycle                  | Implicitly avoided: only connect to vertices not yet in tree     |
+| Order of decisions         | Global: by **edge weights only**                         | Local: by **closest vertex to current tree**                     |
+| Complexity (typical)       | (O(E \log E))                                            | (O(E \log V)) with heap, (O(V^2)) with matrix                    |
+| Better for…                | **Sparse graphs**, many edges stored as a list           | **Dense graphs**, or when graph given as adjacency matrix/list   |
+| Handles disconnected graph | Produces a **minimum spanning forest**                   | Standard version assumes connected; otherwise, multiple runs     |
+| Conceptual similarity      | Like **sorting edges** + greedy                          | Like **Dijkstra without distances**, but using edge weights only |

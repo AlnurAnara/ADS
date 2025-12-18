@@ -1,0 +1,91 @@
+Depth-First Search (DFS)  tc based on the methods u used(matrix,adj-list)
+
+DFS is a fundamental graph traversal algorithm 
+that explores as far as possible along each branch before backtracking.
+Unlike BFS which explores level by level, 
+DFS goes deep into the graph before exploring neighbors.
+
+use stack or recursion 
+use cases: Cycle detection, topological sort, path finding
+
+        0
+       / \
+      1   2
+     / \   \
+    3   4   5
+
+Visit order: 0 → 1 → 3 → 4 → 2 → 5
+
+Path taken:
+1. Start at 0
+2. Go to 1 (first neighbor of 0)
+3. Go to 3 (first neighbor of 1)
+4. Backtrack to 1
+5. Go to 4 (second neighbor of 1)
+6. Backtrack to 0
+7. Go to 2 (second neighbor of 0)
+8. Go to 5 (first neighbor of 2)
+
+
+G={
+    A:[B]
+    B:[A,C,D]
+    C:[K,B,F]
+    D:[B,E,F]
+    E:[D,F]
+    F:[C,D,E]
+    K:[C]
+}
+
+
+DFS(G)
+set<char>v;
+stack<char>st;
+for(auto&e : G){  // this for loop is used to check the unconnected components
+    if(!v.count(e.first)){
+        st.push(e.first);
+       dfs_helper(G,st);
+    }
+}
+
+dfs_helper(G,st)
+    while(!st.empty()){
+        c=st.top(); //the node which is to be visited
+        st.pop();
+        v.insert(c); 
+    }
+
+    for(auto&e : G[c]){
+        if(!v.count(e)){
+            st.push(e);
+            dfs_helper(G,st);
+        }
+    }
+
+differences between BFS And DFS
+BFS                                DFS
+queue                              stake            
+Explore level by level             Go as deep as possible along one path, then backtrack   
+from the source                                   
+Always finds shortest path         ❌ Does not guarantee shortest path
+                                   
+                                    Use DFS when:
+                                    Finding cycles
+                                    Topological sorting
+                                    Finding strongly connected components
+                                    Solving puzzles with backtracking
+                                    Memory is limited (DFS uses less space for wide graphs)
+                                    Exploring all paths
+
+
+                                    topological sort is used for directed acyclic graph 
+
+
+
+Use BFS when:
+
+Finding shortest path (unweighted)
+Level-order traversal
+Finding distance from source
+Finding if two vertices are connected in minimum steps
+Graph is very deep

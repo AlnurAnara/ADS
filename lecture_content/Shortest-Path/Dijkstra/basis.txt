@@ -1,0 +1,19 @@
+Given a weighted graph (G = (V, E)) with edge weights (w(u, v)):
+1.Single-source shortest path (SSSP): 
+find the minimum-cost path from one source vertex (s) to all other vertices.
+✅ 输出
+从 s 到每个点 v 的最短距离
+✅ 举
+想象你在 一个城市（图） 中：
+s = 你的家
+每条路有长度
+SSSP = 你从家出发，到所有地方最近怎么走
+
+算法	      适用情况
+Dijkstra	  边权 ≥ 0
+Bellman–Ford  可有负权边
+BFS	          所有边权相同
+
+2.All-pairs shortest path (APSP):  ---Floyd–Warshall
+find the minimum-cost path between every pair of vertices.
+APSP 的目标是：计算 任意两点之间的最短路径。

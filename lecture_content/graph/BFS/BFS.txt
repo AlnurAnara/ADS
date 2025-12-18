@@ -1,6 +1,10 @@
-5.1 BFS 本质是什么？
+BFS is a graph traversal algorithm that explores vertices level by level, starting from a source vertex.
 BFS = 从起点出发，一圈一圈向外扩散，先访问所有“距离 1 的点”，再访问“距离 2 的点”，再是“距离 3 的点”…
 它用的关键结构：队列 queue（先进先出）
+BFS finds shortest path - in unweighted graphs
+
+Space	O(V)	
+Time	O(V + E)
 
         0
        / \
@@ -13,7 +17,7 @@ BFS = 从起点出发，一圈一圈向外扩散，先访问所有“距离 1 �
 第 1 层：1, 2
 第 2 层：3, 4, 5
 
-访问顺序：0 → 1 → 2 → 3 → 4 → 5
+访问顺序：0 → 1 → 2 → 3 → 4 → 5   till all reachable vertices are visited
 
 BFS(map<int,vector<int>> graph, int startNode) {
     

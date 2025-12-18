@@ -1,0 +1,61 @@
+use intermediate node
+Purpose:
+Finds all-pairs shortest paths — shortest paths between every pair of vertices.
+it is not allowed for negative cycles in the graph. which means i=j
+but supports negatibe edges
+
+Dynamic programming over intermediate vertices: after processing vertices (0..k), 
+dist[i][j] stores the shortest path from i to j using only those intermediates.
+
+//time complexity is O(V^3)     Space: (O(V^2)).
+
+FloydWarshall(graph):
+    vector<vector<long long> D;
+    D = G
+    for(int k=9;k<V;K++){ // the intermediate node
+        for(int i=0;i<B;i++){ // the initial node
+            for(int j=0;j<V;j++){ // the terminal node
+                if(D[i][k] != le18 && D[k][j] != le18 ){
+                    D[i][j]=min(D[i][j],D[i][k]+D[k][j])
+                }
+            }
+               
+        
+        }
+    }
+
+// this part is to check whether there is a cycle init by checking the main diagonal of the matrix
+for(int i=0;i<B;i++){
+    if D[i][i] != 0 {
+        return False 
+    }
+}
+
+
+
+0 --(3)--> 1
+ \        ^
+ (8)\     |(1)
+     v    |
+      2 --+
+Initial dist:
+
+0	1	2
+0	0	3	8
+1	INF	0	1
+2	INF	INF	0
+Run Floyd–Warshall for k = 0, 1, 2 (intermediate vertices):
+
+k = 0: Update paths that go through vertex 0. No improvements for this graph.
+
+k = 1: Path 0 → 1 → 2 improves dist[0][2] from 8 to 3 + 1 = 4. Matrix becomes:
+
+0	1	2
+0	0	3	4
+1	INF	0	1
+2	INF	INF	0
+k = 2: No further updates; the matrix above is final. If any dist[i][i] became negative, that would indicate a negative cycle.
+
+This table-based update view shows how each intermediate vertex can tighten paths between every pair.
+
+    

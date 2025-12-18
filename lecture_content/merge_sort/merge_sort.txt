@@ -1,4 +1,7 @@
 time complexitity is O(nlog n)  because we divide the array which is log n and compare the 大小 which is n (horizantal )
+space complecity O(n)--bc of array
+it is stable
+
 8 7 2 5 9 6 4 3
 8 7 2 5    9 6 4 3       split the oridinary array into 2 parts 
 8 7   2 5    9 6   4 3 

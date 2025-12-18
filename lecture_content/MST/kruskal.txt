@@ -1,0 +1,14 @@
+Kruskal's Algorithm: finds the minimum spanning tree
+(1).Definition
+start with the smallest weight edge ,skipping edges that would create a cycle. 
+A Disjoint Set Union (DSU) (also called Union-Find) quickly detects cycles.
+
+(2).Steps
+1.Sort all edges in non-decreasing order of weight.
+2.Initialize DSU so each vertex is its own set.
+3.For each edge (u, v, w) in order:
+    * If find(u) != find(v), add the edge to the MST and union the sets.
+    * Stop when (|V| - 1) edges are chosen.
+
+(3).Time complecity:O(E logE)
+

@@ -16,3 +16,9 @@ Compute hash of pattern s2
 Compute prefix hashes of text s1
 For each position i, compare hash of substring with pattern hash
 Only compare actual strings if hashes match (to handle collisions)
+
+
+
+
+
+what is rolling hash!!! check it 

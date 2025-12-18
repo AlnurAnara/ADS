@@ -5,7 +5,7 @@
 #include <map>
 using namespace std;
 
-
+//breadth-first search (BFS) algorithm
 // BFS introduces a queue data structure to explore nodes level by level
 //TC: O(V + E) 
 //SC: O(V) for the visited set and the queue in the worst case

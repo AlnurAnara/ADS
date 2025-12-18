@@ -1,0 +1,39 @@
+Bellman-Ford(Handles Negative Weights)
+
+Goal: Single-source shortest paths that allow negative weights and detect negative cycles reachable from the source
+//time complexity : Time complexity: O(V⋅E)    Space: (O(V)).
+
+
+     i  j  w
+G = [[0,1,4]]
+BellmanFord(graph,source){
+    vector<long long> D(V,le18);
+    D[source]=0
+    for(int i=0;i<V-1;i++){
+        for(auto& e:G){
+            u=e[0]
+            v=e[1]
+            w=e[2]
+            if(D[u] != le18 && D[v]>D[u]+w){
+                D[v]=D[u]+w
+                 //detect the negative weight cycle
+                if i==V-1{
+                    return False
+                }
+            }
+        }
+    }
+
+}
+
+      (4)
+ 0 --------> 1
+ |           ^ \
+ |(5)        |  \ (1)
+ v           |   v
+ 2 --------> 3 --+ 
+      (-2)
+
+Pass	Edge relaxed	             Change	                            dist after pass
+1	   0→1 (+4), 0→2 (+5),          dist[1] improves twice (∞→4→3), 
+        2→3 (-2), 3→1 (+1)          dist[2]=5, dist[3]=3	             [0, 3, 5, 3]
